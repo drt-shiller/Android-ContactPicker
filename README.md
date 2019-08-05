@@ -1,6 +1,6 @@
 # Android-ContactPicker
 
-[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![](https://jitpack.io/v/LordParsley/Android-ContactPicker.svg)](https://jitpack.io/#LordParsley/Android-ContactPicker)
 
 The Android Contact Picker is a beautifully designed component to pick one or several contacts (including groups) from the Android contacts list.<br>
 A demo app can be found here: https://play.google.com/store/apps/details?id=com.onegravity.contactpicker.demo.
@@ -11,18 +11,20 @@ A demo app can be found here: https://play.google.com/store/apps/details?id=com.
 Setup
 -----
 
-####**Dependencies**
+#### Dependencies
 
 Add this to your Gradle build file:
+
 ```
 dependencies {
-    compile 'com.1gravity:android-contactpicker:1.3.2'
+    implementation 'com.github.lordparsley:android-contactpicker:1.4.0'
 }
 ```
 
-####**Manifest**
+#### Manifest
 
 Define the contact picker Activity and the READ_CONTACTS permission in the manifest:
+
 ```
 <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -41,9 +43,10 @@ Define the contact picker Activity and the READ_CONTACTS permission in the manif
 Note: if your app targets Android 6 and higher (API level 23 and above), you also need to request the contacts permission at run-time.
 Check out the demo app for an example how this can be done.
  
-####**Usage**
+#### Usage
 
 Call the contact picker like this (see Javadoc for a description of the individual parameters):
+
 ```
 Intent intent = new Intent(this, ContactPickerActivity.class)
     .putExtra(ContactPickerActivity.EXTRA_THEME, mDarkTheme ? R.style.Theme_Dark : R.style.Theme_Light)
@@ -56,6 +59,7 @@ startActivityForResult(intent, REQUEST_CONTACT);
 ```
 
 Process the result like this:
+
 ```
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -81,7 +85,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 The source code includes a more comprehensive example.<br>Also check out the demo app on Google Play: https://play.google.com/store/apps/details?id=com.onegravity.contactpicker.demo.
 
-####**Intent Extra Parameters**
+#### Intent Extra Parameters
 
 As seen above in the example, these parameters are chained to the intent where each param descriptor is attached to `ContactPickerActivity`. 
 Below is a listing of the parameters and their purpose:
@@ -92,8 +96,9 @@ Below is a listing of the parameters and their purpose:
 |  **EXTRA_LIMIT_REACHED_MESSAGE** (String)  |  This parameter sets the text displayed as a toast when the set limit is reached <br/> Default: `You can't pick more than {limit} contacts!` |
 |  **EXTRA_SHOW_CHECK_ALL** (Boolean)  |  This parameter decides whether to show/hide the check_all button in the menu. When `EXTRA_SELECT_CONTACTS_LIMIT` > 0, this will be forced to `false`.  <br/> Default: `true` |
 |  **EXTRA_ONLY_CONTACTS_WITH_PHONE** (Boolean)  |  This parameter sets the boolean that filters contacts that have no phone numbers <br/> Default: `false` |
+|  **EXTRA_WITH_GROUP_TAB** (Boolean)  |  This parameter sets a boolean to only show tab contacts or both (contacts and group).<br/> Default: `true` |
 
-####**Theming**
+#### Theming
 
 The library supports a dark and a light theme out-of-the-box. In order to do that, it defines a
 couple of custom attributes in attrs.xml.
@@ -101,7 +106,7 @@ To integrate the contact picker in your app, you need to either extend one of th
 themes (ContactPicker_Theme_Light / ContactPicker_Theme_Dark) or define the custom attributes in
 your own theme.
 
-#### **Proguard**
+#### Proguard
 
 If you use Proguard, please add the following lines to your configuration file:
 ```
