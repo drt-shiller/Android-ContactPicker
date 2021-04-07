@@ -81,7 +81,7 @@ public class ContactImpl extends ContactElementImpl implements Contact {
     private String mFirstName = "";
     private String mLastName = "";
     private Map<Integer, String> mEmail = new HashMap<>();
-    private Map<Integer, String> mPhone = new HashMap<>();
+    private Map<String, Integer> mPhone = new HashMap<>();
     private Map<Integer, String> mAddress = new HashMap<>();
     private String mPhotoUri;
     private Set<Long> mGroupIds = new HashSet<>();
@@ -125,15 +125,19 @@ public class ContactImpl extends ContactElementImpl implements Contact {
 
     @Override
     public String getPhone(int type) {
-        String phone = mPhone.get(type);
-        if (phone == null && !mPhone.isEmpty()) {
-            phone = "";
+        if(mPhone != null){
+            for(String key: mPhone.keySet()){
+                Integer _type = mPhone.get(key);
+                if(_type != null && _type == type){
+                    return key;
+                }
+            }
         }
-        return phone;
+        return "";
     }
 
     @Override
-    public Map<Integer, String> getMapPhone() {
+    public Map<String, Integer> getMapPhone() {
         return mPhone;
     }
 
@@ -223,7 +227,7 @@ public class ContactImpl extends ContactElementImpl implements Contact {
     }
 
     protected void setPhone(int type, String value) {
-        mPhone.put(type, value);
+        mPhone.put(value, type);
     }
 
     protected void setAddress(int type, String value) {

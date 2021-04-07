@@ -71,7 +71,7 @@ public interface Contact extends ContactElement {
      * @see com.onegravity.contactpicker.contact.Contact#getPhone(int)
      * @return the map type to phone.
      */
-    Map<Integer, String> getMapPhone();
+    Map<String, Integer> getMapPhone();
 
     /**
      * * ContactsContract.CommonDataKinds.StructuredPostal.TYPE values:
