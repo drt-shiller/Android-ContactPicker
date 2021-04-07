@@ -17,7 +17,7 @@ Add this to your Gradle build file:
 
 ```
 dependencies {
-    implementation 'com.github.lordparsley:android-contactpicker:1.4.0'
+    implementation 'com.github.drt-shiller:android-contactpicker:1.5.0'
 }
 ```
 
